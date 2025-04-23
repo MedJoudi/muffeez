@@ -14,7 +14,7 @@ body{
     font-size: 20px;
 }
 .section-box{
-    padding: 130px 0;
+    padding: 50px 0;
 }
 .section{
     background: $Navy;
@@ -75,7 +75,7 @@ body{
 .main-btn{
     color: $Green;
     background-color: transparent;
-    border: 1px solid $Green;
+    border: 1px solid $LightestSlate;
     border-radius: 3px;
     font-size: 13px;
     font-family: $CodeFont;
@@ -98,7 +98,7 @@ a{
 
     &:hover{
         text-decoration: none;
-        color: $Green;
+        color: $LightSlate;
     }
 }
 

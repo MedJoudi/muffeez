@@ -13,6 +13,9 @@ import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { BlogListComponent } from './blog/blog-list/blog-list.component';
+import { BlogPostComponent } from './blog/blog-post/blog-post.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -21,6 +24,8 @@ export function HttpLoaderFactory(http: HttpClient){
 @NgModule({
   declarations: [
     AppComponent,
+    BlogListComponent,
+    BlogPostComponent,
     /* ArchiveComponent */
   ],
   imports: [
@@ -28,7 +33,8 @@ export function HttpLoaderFactory(http: HttpClient){
 
     HomeModule,
     GeneralModule,
-
+    MarkdownModule.forRoot(),
+    // MarkdownModule.forRoot({ loader: HttpClient }), // Uncomment if you want to use HttpClient for loading markdown files
     AnimateOnScrollModule.forRoot(),
     BrowserModule,
     AppRoutingModule,

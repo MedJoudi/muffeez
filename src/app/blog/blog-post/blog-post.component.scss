@@ -1,0 +1,182 @@
+@import "./../../../variables.scss";
+
+.blog-post-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 150px 20px;
+  color: $Slate;
+
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    color: $Green;
+    text-decoration: none;
+    font-family: $CodeFont;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+
+    &:hover {
+      color: $White;
+    }
+
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .featured-image {
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  .post-header {
+    margin-bottom: 2.5rem;
+
+    .meta-info {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+      font-family: $CodeFont;
+      font-size: 0.9rem;
+      color: $Green;
+
+      .post-author {
+        color: $LightSlate;
+      }
+    }
+
+    .post-title {
+      font-size: 2.5rem;
+      margin: 0 0 1rem;
+      color: $White;
+      line-height: 1.2;
+    }
+
+    .post-subtitle {
+      font-size: 1.25rem;
+      color: $LightestSlate;
+      margin: 0 0 1.5rem;
+      line-height: 1.5;
+    }
+
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+
+      .tag {
+        background-color: $LightNavy;
+        color: $Navy;
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        font-family: $CodeFont;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .post-content {
+    line-height: 1.7;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+
+    h2, h3, h4 {
+      color: $Slate;
+      margin: 2rem 0 1rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    ul, ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .post-footer {
+    border-top: 1px solid $LightNavy;
+    padding-top: 2rem;
+    margin-top: 2rem;
+
+    .author-info {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+
+      .author-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .author-details {
+        h4 {
+          margin: 0 0 0.5rem;
+          color: $White;
+        }
+
+        p {
+          margin: 0;
+          font-size: 0.9rem;
+          color: $LightSlate;
+        }
+      }
+    }
+  }
+
+  /* Loading and Error States */
+  .loading-state, .error-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    text-align: center;
+
+    svg {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .error-state {
+    color: #FF5252;
+
+    .retry-button {
+      margin-top: 1rem;
+      background: transparent;
+      border: 1px solid #FF5252;
+      color: #FF5252;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(255, 82, 82, 0.1);
+      }
+    }
+  }
+}

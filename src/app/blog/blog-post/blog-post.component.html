@@ -1,0 +1,63 @@
+<div class="blog-post-container">
+  <!-- Back Button -->
+  <a class="back-button" (click)="navigateBack()">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.70711 1.70711C8.09763 1.31658 8.09763 0.683417 7.70711 0.292893C7.31658 -0.0976311 6.68342 -0.0976311 6.29289 0.292893L0.292893 6.29289C-0.0976311 6.68342 -0.0976311 7.31658 0.292893 7.70711L6.29289 13.7071C6.68342 14.0976 7.31658 14.0976 7.70711 13.7071C8.09763 13.3166 8.09763 12.6834 7.70711 12.2929L3.41421 8H15C15.5523 8 16 7.55228 16 7C16 6.44772 15.5523 6 15 6H3.41421L7.70711 1.70711Z" fill="currentColor"/>
+    </svg>
+    Back to Blog
+  </a>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="loading-state">
+    <div class="loading-spinner"></div>
+    Loading post...
+  </div>
+  
+  <!-- Error State -->
+  <div *ngIf="error" class="error-state">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="#FF5252"/>
+    </svg>
+    <p>Failed to load blog post. Please try again later.</p>
+    <button class="retry-button" (click)="loadPost()">Retry</button>
+  </div>
+  
+  <!-- Content -->
+  <div *ngIf="!loading && !error">
+    <!-- Featured Image -->
+    <div *ngIf="postMetadata.image" class="featured-image">
+      <img [src]="postMetadata.image" [alt]="postMetadata.title">
+    </div>
+
+    <!-- Post Header -->
+    <div class="post-header">
+      <div class="meta-info">
+        <span class="post-date">{{ postMetadata.date | date:'mediumDate' }}</span>
+        <span *ngIf="postMetadata.author" class="post-author">By {{ postMetadata.author }}</span>
+      </div>
+      <h1 class="post-title">{{ postMetadata.title }}</h1>
+      <p *ngIf="postMetadata.subtitle" class="post-subtitle">{{ postMetadata.subtitle }}</p>
+      
+      <!-- Tags -->
+      <div *ngIf="postMetadata.tags && postMetadata.tags.length" class="post-tags">
+        <span *ngFor="let tag of postMetadata.tags" class="tag">{{ tag }}</span>
+      </div>
+    </div>
+
+    <!-- Post Content -->
+    <div class="post-content" markdown [data]="postContent"></div>
+
+    <!-- Post Footer -->
+    <div class="post-footer">
+      <div class="author-info" *ngIf="postMetadata.author">
+        <div class="author-avatar">
+          <img src="/assets/images/me/mario.png" alt="Author avatar">
+        </div>
+        <div class="author-details">
+          <h4>About {{ postMetadata.author }}</h4>
+          <p>Lecturer / Phd. / MCT</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

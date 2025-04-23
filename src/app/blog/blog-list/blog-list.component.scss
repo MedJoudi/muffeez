@@ -1,0 +1,110 @@
+@import "./../../../variables.scss";
+
+.blog-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  color: $LightestSlate;
+
+  .blog-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    font-family: $CodeFont;
+
+    h1 {
+      font-size: clamp(26px, 5vw, 32px);
+      font-weight: 600;
+      color: $LightestSlate;
+      margin: 0;
+      line-height: 1.1;
+
+      &:before {
+        content: "03.";
+        margin-right: 10px;
+        color: $Green;
+        font-size: clamp(16px, 3vw, 20px);
+      }
+    }
+
+    .divider {
+      flex-grow: 1;
+      height: 1px;
+      background-color: $LightestNavy;
+      margin-left: 20px;
+    }
+  }
+
+  .post-list {
+    display: grid;
+    gap: 30px;
+  }
+
+  .post-card {
+    background-color: $Slate;
+    color: $LightSlate;
+    border-radius: 5px;
+    padding: 30px;
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-left: 2px solid $Green;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    }
+
+    a{
+      text-decoration: none;
+      color: $Navy;
+  
+      &:hover{
+          text-decoration: none;
+          color: $Green;
+      }
+    }
+
+    .post-date {
+      font-family: $CodeFont;
+      font-size: 14px;
+      color: $LightSlate;
+      margin-bottom: 10px;
+    }
+
+    .post-title {
+      font-size: 22px;
+      color: $Navy;
+      margin: 0 0 15px;
+      transition: color 0.25s ease;
+    }
+
+    .post-summary {
+      color: $Navy;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .read-more {
+      font-family: $CodeFont;
+      font-size: 14px;
+      color: $Navy;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 1px;
+        background: $Green;
+        transition: width 0.3s;
+        position: absolute;
+        bottom: -3px;
+      }
+
+      &:hover:after {
+        width: 100%;
+      }
+    }
+  }
+}

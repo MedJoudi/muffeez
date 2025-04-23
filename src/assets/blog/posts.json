@@ -1,0 +1,18 @@
+[
+    {
+      "id": "my-first-post",
+      "title": "My First Blog Post",
+      "date": "2023-06-15",
+      "summary": "An introduction to my blog",
+      "tags": ["Test", "Angular"],
+      "image": ["assets/images/blog-placeholder.jpg"]
+    },
+    {
+      "id": "another-post",
+      "title": "Another Post",
+      "date": "2023-06-14",
+      "summary": "More thoughts and ideas",
+      "tags": ["Test", "Angular"],
+      "image": ["assets/images/blog-placeholder.jpg"]
+    }
+  ]

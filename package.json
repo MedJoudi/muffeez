@@ -30,6 +30,7 @@
     "bootstrap": "^4.5.0",
     "ng2-animate-on-scroll": "2.3.2",
     "ngx-google-analytics": "^11.2.0",
+    "ngx-markdown": "^13.1.0",
     "ngx-owl-carousel-o": "^6.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
@@ -37,7 +38,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^13.2.4",
-    "@angular/cli": "^13.2.6",
+    "@angular/cli": "^13.3.11",
     "@angular/compiler-cli": "~13.2.3",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",

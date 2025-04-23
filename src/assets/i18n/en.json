@@ -1,4 +1,5 @@
 {
+    "Header.Item0": "Home",
     "Header.Item1": "About me",
     "Header.Item2": "Experience",
     "Header.Item3": "Projects",
@@ -68,7 +69,7 @@
             ]
         }
     ],
-    "FeatureProjects.Title": "Projects that I was a part of",
+    "FeatureProjects.Title": "Latest Blog Posts",
     "FeatureProjects.Label": "Featured Project",
     "FeatureProjects.Projects": [
         {

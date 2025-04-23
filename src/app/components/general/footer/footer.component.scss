@@ -1,7 +1,7 @@
 @import "./../../../../variables.scss";
 
 footer{
-    color: $LightSlate;
+    color: $LightestSlate;
 
     .footer-left-bar:after, .footer-right-bar:after{
         content: '';
@@ -9,7 +9,7 @@ footer{
         width: 1px;
         height: 90px;
         margin: 0 auto;
-        background-color: $LightSlate;
+        background-color: $LightestSlate;
     }
 
     .footer-left-bar li, .footer-right-bar li{
@@ -24,7 +24,7 @@ footer{
 
         i{
             font-size: 19px;
-            color: $LightSlate;
+            color: $LightestSlate;
         }
 
         li{
@@ -58,7 +58,7 @@ footer{
             writing-mode: vertical-rl;
             margin: 20px auto;
             padding: 10px;
-            color: $LightSlate;
+            color: $LightestSlate;
         }
     }
     .footer-credits{
@@ -73,7 +73,7 @@ footer{
         margin-top: -60px;
 
         a{
-            color: $LightSlate;
+            color: $LightestSlate;
             -webkit-transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
             transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
             transition-property: all;

@@ -1,0 +1,19 @@
+<div class="blog-container">
+    <h1>Blog Posts</h1>
+    
+    <div *ngIf="loading" class="loading">Loading posts...</div>
+    
+    <div *ngIf="error" class="error">
+      Failed to load blog posts. Please try again later.
+    </div>
+    
+    <div *ngIf="!loading && !error" class="post-list">
+      <div *ngFor="let post of posts" class="post-card">
+        <a [routerLink]="['/blog', post.id]">
+          <h2>{{ post.title }}</h2>
+          <p class="date">{{ post.date | date:'mediumDate' }}</p>
+          <p class="summary">{{ post.summary }}</p>
+        </a>
+      </div>
+    </div>
+  </div>
