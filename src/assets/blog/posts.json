@@ -14,5 +14,21 @@
       "summary": "More thoughts and ideas",
       "tags": ["Test", "Angular"],
       "image": ["assets/images/blog-placeholder.jpg"]
+    },
+    {
+      "id": "yet-another-post",
+      "title": "Yet Another Post",
+      "date": "2023-06-13",
+      "summary": "Continuing the journey",
+      "tags": ["Test", "Angular"],
+      "image": ["assets/images/blog-placeholder.jpg"]
+    },
+    {
+      "id": "my-first-post-2",
+      "title": "My First Blog Post 2",
+      "date": "2023-06-12",
+      "summary": "An introduction to my blog 2",
+      "tags": ["Test", "Angular"],
+      "image": ["assets/images/blog-placeholder.jpg"]
     }
   ]

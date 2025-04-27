@@ -38,8 +38,8 @@
                 position: relative;
                 z-index: 2;
                 padding: 25px;
-                background-color: $LightNavy;
-                color: $LightSlate;
+                background-color: $LightSlate;
+                color: $LightNavy;
                 font-size: 18px;
                 border-radius: 3px;
             }
@@ -175,7 +175,7 @@
         .proyect-info-right .proyect-box,
         .proyect-info-left .proyect-box {
             padding: 20px;
-            background: #0a192fe3;
+            background: $LightSlate;
         }
     }
 }

@@ -4,6 +4,7 @@ import { trigger, style, query, transition, stagger, animate } from '@angular/an
 import { AnalyticsService } from 'src/app/services/analytics/analytics.service';
 import { LanguageService } from 'src/app/services/language/language.service';
 import { FormControl } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-header',
@@ -33,12 +34,14 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     public analyticsService: AnalyticsService,
+    private titleService: Title,
     public languageService: LanguageService
   ) { }
 
   ngOnInit(): void {
     this.languageFormControl.valueChanges.subscribe(val => this.languageService.changeLanguage(val));
     this.languageFormControl.setValue(this.languageService.language);
+    this.titleService.setTitle(`Marouen Kachroudi | Lecturer / Phd. / MCT`);
   }
 
   scroll(el: string) {
@@ -80,8 +83,10 @@ export class HeaderComponent implements OnInit {
   handleLogoClick() {
     if (this.router.url === '/home' || this.router.url === '/') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        this.titleService.setTitle(`Marouen Kachroudi | Lecturer / Phd. / MCT`);
     } else {
         this.router.navigate(['/home']);
+        this.titleService.setTitle(`Marouen Kachroudi | Lecturer / Phd. / MCT`);
     }
   }
 }

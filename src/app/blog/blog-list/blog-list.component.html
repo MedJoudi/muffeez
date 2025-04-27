@@ -11,9 +11,9 @@
       <div *ngFor="let post of posts" class="post-card">
         <a [routerLink]="['/blog', post.id]">
           <h2>{{ post.title }}</h2>
+        </a>
           <p class="date">{{ post.date | date:'mediumDate' }}</p>
           <p class="summary">{{ post.summary }}</p>
-        </a>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-name: Azure Static Web Apps CI/CD [2nd Sub]
+name: Azure Static Web Apps CI/CD [Demo MK Subscription]
 
 on:
   push:

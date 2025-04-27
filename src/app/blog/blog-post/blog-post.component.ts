@@ -95,7 +95,7 @@ export class BlogPostComponent implements OnInit {
       
       // Set document title
       if (this.postMetadata.title) {
-        this.titleService.setTitle(`${this.postMetadata.title} | Your Site Name`);
+        this.titleService.setTitle(`Marouen Kachroudi | ${this.postMetadata.title}`);
       }
     } else {
       // If no metadata found, use entire content and set defaults

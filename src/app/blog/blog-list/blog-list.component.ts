@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 
 interface BlogPost {
   id: string;
@@ -18,7 +19,10 @@ export class BlogListComponent implements OnInit {
   loading = true;
   error = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private titleService: Title,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
     this.http.get<BlogPost[]>('/assets/blog/posts.json').subscribe(
@@ -31,5 +35,6 @@ export class BlogListComponent implements OnInit {
         this.loading = false;
       }
     );
+    this.titleService.setTitle(`Marouen Kachroudi | Blog`);
   }
 }
