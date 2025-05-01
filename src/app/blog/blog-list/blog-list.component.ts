@@ -1,12 +1,16 @@
+// blog-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { AnalyticsService } from '../../services/analytics/analytics.service';
 
 interface BlogPost {
   id: string;
   title: string;
   date: string;
   summary: string;
+  tags: string[];
 }
 
 @Component({
@@ -21,13 +25,20 @@ export class BlogListComponent implements OnInit {
 
   constructor(
     private titleService: Title,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router,
+    public analyticsService: AnalyticsService
   ) {}
 
   ngOnInit() {
-    this.http.get<BlogPost[]>('/assets/blog/posts.json').subscribe(
+    this.loadBlogPosts();
+    this.titleService.setTitle(`Marouen Kachroudi | Blog`);
+  }
+
+  loadBlogPosts(): void {
+    this.http.get<BlogPost[]>('assets/blog/posts.json').subscribe(
       posts => {
-        this.posts = posts;
+        this.posts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
         this.loading = false;
       },
       error => {
@@ -35,6 +46,9 @@ export class BlogListComponent implements OnInit {
         this.loading = false;
       }
     );
-    this.titleService.setTitle(`Marouen Kachroudi | Blog`);
+  }
+
+  goToPost(id: string) {
+    this.router.navigate(['/blog', id]);
   }
 }

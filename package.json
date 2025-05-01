@@ -28,6 +28,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "aos": "^2.3.4",
     "bootstrap": "^4.5.0",
+    "disable-devtool": "^0.3.8",
     "ng2-animate-on-scroll": "2.3.2",
     "ngx-google-analytics": "^11.2.0",
     "ngx-markdown": "^13.1.0",

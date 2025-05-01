@@ -1,19 +1,45 @@
+<!-- blog-list.component.html -->
 <div class="blog-container">
-    <h1>Blog Posts</h1>
-    
-    <div *ngIf="loading" class="loading">Loading posts...</div>
-    
-    <div *ngIf="error" class="error">
-      Failed to load blog posts. Please try again later.
-    </div>
-    
-    <div *ngIf="!loading && !error" class="post-list">
-      <div *ngFor="let post of posts" class="post-card">
-        <a [routerLink]="['/blog', post.id]">
-          <h2>{{ post.title }}</h2>
-        </a>
-          <p class="date">{{ post.date | date:'mediumDate' }}</p>
-          <p class="summary">{{ post.summary }}</p>
+  <div class="container">
+    <div class="section-box">
+      <div data-aos="fade-up" data-aos-duration="1000">
+        <h3 class="section-title">
+          Blog Posts
+        </h3>
+      </div>
+
+      <div *ngIf="loading" class="loading">Loading posts...</div>
+      
+      <div *ngIf="error" class="error">
+        Failed to load blog posts. Please try again later.
+      </div>
+
+      <div *ngIf="!loading && !error" class="posts-grid-container">
+        <div class="posts-grid">
+          <div *ngFor="let post of posts" class="post-card" data-aos="fade-up" data-aos-duration="1000">
+            <div class="post-content">
+              <h4 class="post-date text-right">{{ post.date | date:'mediumDate' }}</h4>
+              <h5 class="post-title text-center">{{ post.title }}</h5>
+
+              <div class="post-description">
+                <p>{{ post.summary }}</p>
+              </div>
+              
+              <ul class="post-tags">
+                <li *ngFor="let tag of post.tags">
+                  <span class="underline">{{ tag }}</span>
+                </li>
+              </ul>
+              
+              <div class="post-link">
+                <a (click)="goToPost(post.id)" style="color: inherit; cursor: pointer;">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
