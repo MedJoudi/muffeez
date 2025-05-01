@@ -85,6 +85,8 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
+                        "disableHostCheck": true,
+                        "servePath": "/",
                         "browserTarget": "muffeez-portfolio:build"
                     },
                     "configurations": {
