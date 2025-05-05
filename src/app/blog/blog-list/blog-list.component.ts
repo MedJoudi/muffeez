@@ -11,6 +11,7 @@ interface BlogPost {
   date: string;
   summary: string;
   tags: string[];
+  image: string;
 }
 
 @Component({

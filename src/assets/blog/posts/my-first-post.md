@@ -4,7 +4,7 @@ date: 2023-06-15
 subtitle: "A Deep Dive into Azure's Networking Gem"
 author: "Marouen Kachroudi"
 tags: ["Azure", "Cloud", "Private Link", "Services"]
-image: "assets/images/bbm/az-private-link.jpg"
+image: "assets/blog/images/az-private-link.jpg"
 ---
 
 # Azure Private Link: Secure and Private Access to Azure Services  

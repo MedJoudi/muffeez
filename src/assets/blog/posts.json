@@ -3,9 +3,9 @@
       "id": "my-first-post",
       "title": "Azure Private Link",
       "date": "2023-06-15",
-      "summary": "Azure Private Link is a service that provides private connectivity from a virtual network to Azure services, customer-owned services, and Microsoft partner services.",
+      "summary": "Azure Private Link is a service that provides private connectivity from a virtual network to Azure services.",
       "tags": ["Azure", "Cloud", "Private Link", "Services"],
-      "image": ["assets/images/bbm/az-private-link.jpg","assets/images/blog-placeholder.jpg"]
+      "image": ["assets/blog/images/az-private-link.jpg"]
     },
     {
       "id": "another-post",
@@ -13,7 +13,7 @@
       "date": "2023-06-14",
       "summary": "More thoughts and ideas",
       "tags": ["Test", "Angular"],
-      "image": ["assets/images/blog-placeholder.jpg"]
+      "image": ["assets/images/bbm/image1.png"]
     },
     {
       "id": "yet-another-post",

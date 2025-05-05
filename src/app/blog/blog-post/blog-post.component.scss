@@ -52,7 +52,7 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 20%;
+      height: 10%;
       background: linear-gradient(to bottom, rgba(255,255,255,0.8), transparent);
       z-index: 1;
     }
@@ -64,7 +64,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 20%;
+      height: 10%;
       background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
       z-index: 1;
     }
@@ -164,11 +164,11 @@
 
     // Code blocks
     pre {
-      background-color: rgba($LightNavy, 0.4) !important;
-      padding: 1.25rem !important;
+      background-color: rgba($NavyClear, 0.4) !important;
+      padding: 0.5rem !important;
       border-radius: 6px !important;
       border: 1px solid rgba($Green, 0.2) !important;
-      margin: 1.5rem 0 !important;
+      margin: 0.5rem 0 !important;
       overflow-x: auto !important;
 
       code {

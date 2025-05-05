@@ -24,23 +24,24 @@
   
   <!-- Content -->
   <div *ngIf="!loading && !error">
-    <!-- Featured Image -->
-    <div *ngIf="postMetadata.image" class="featured-image">
-      <img [src]="postMetadata.image" [alt]="postMetadata.title">
-    </div>
 
     <!-- Post Header -->
     <div class="post-header">
-      <div class="meta-info">
+      <div class="meta-info float-right">
         <span class="post-date">{{ postMetadata.date | date:'mediumDate' }}</span> 
         <span class="">by</span> <span *ngIf="postMetadata.author" class="post-author">{{ postMetadata.author }}</span>
       </div>
       <h1 class="post-title">{{ postMetadata.title }}</h1>
       <p *ngIf="postMetadata.subtitle" class="post-subtitle">{{ postMetadata.subtitle }}</p>
       
+      <!-- Post Image -->
+      <div *ngIf="postMetadata.image" class="featured-image">
+        <img [src]="postMetadata.image" [alt]="postMetadata.title">
+      </div>
+
       <!-- Tags -->
       <div *ngIf="postMetadata.tags && postMetadata.tags.length" class="post-tags">
-        <span *ngFor="let tag of postMetadata.tags" class="tag">{{ tag }}</span>
+        <span *ngFor="let tag of postMetadata.tags" class="tag badge">{{ tag }}</span>
       </div>
     </div>
 
@@ -51,7 +52,7 @@
     <div class="post-footer">
       <div class="author-info" *ngIf="postMetadata.author">
         <div class="author-avatar">
-          <img src="/assets/images/me/mario.png" alt="Author avatar">
+          <img src="/assets/images/me/head.png" alt="Author avatar">
         </div>
         <div class="author-details">
           <h4>About {{ postMetadata.author }}</h4>

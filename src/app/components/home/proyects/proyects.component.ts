@@ -55,7 +55,7 @@ export class ProyectsComponent implements OnInit {
     this.http.get<any[]>('assets/blog/posts.json').subscribe(posts => {
       const sorted = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-      this.recentPosts = sorted.slice(0, 2).map(post => ({
+      this.recentPosts = sorted.slice(0, 3).map(post => ({
         id: post.id,
         Title: post.title,
         Description: post.summary,

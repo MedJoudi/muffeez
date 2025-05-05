@@ -17,25 +17,34 @@
       <div *ngIf="!loading && !error" class="posts-grid-container">
         <div class="posts-grid">
           <div *ngFor="let post of posts" class="post-card" data-aos="fade-up" data-aos-duration="1000">
+            <div class ="post-card-image">
+              <img class="card-img-top rounded" [src]="post.image || 'holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail'" alt="Card image cap">
+            </div>
             <div class="post-content">
-              <h4 class="post-date text-right">{{ post.date | date:'mediumDate' }}</h4>
-              <h5 class="post-title text-center">{{ post.title }}</h5>
+              
+              <h5 class="post-title">{{ post.title }}</h5>
 
               <div class="post-description">
                 <p>{{ post.summary }}</p>
               </div>
               
-              <ul class="post-tags">
-                <li *ngFor="let tag of post.tags">
-                  <span class="underline">{{ tag }}</span>
-                </li>
-              </ul>
               
-              <div class="post-link">
-                <a (click)="goToPost(post.id)" style="color: inherit; cursor: pointer;">
-                  <i class="fas fa-external-link-alt"></i>
-                </a>
+              <div class="post-footer mt-auto">
+                <ul class="post-tags">
+                  <li *ngFor="let tag of post.tags">
+                    <span class=" badge underline">{{ tag }}</span>
+                  </li>
+                </ul>
+                
+                <div class="post-date">
+                  <small class="text-muted float-right">{{ post.date | date:'mediumDate' }}</small>
+                </div>
+
+                <div class="post-link">
+                  <button type="button" class="btn btn-outline-primary" (click)="goToPost(post.id)">Read</button>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
