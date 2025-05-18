@@ -11,9 +11,9 @@
     "Banner.ActionBtn": "Get in touch",
     "AboutMe.Title": "About me",
     "AboutMe.Paragraphs": [
-        "In my <span class='underline'>4+ years as a developer</span>, I seek to train every day. I have worked writing <span class='underline'>unit tests</span>, performing <span class='underline'>continuous integration</span>, and covering backend developer roles with <span class='underline'>ExpressJS</span>, <span class='underline'>NestJs</span>, <span class='underline'>MongoDB</span> and <span class='underline'>Mysql</span>. I have led teams having empathy, exercising motivation to partners, and setting plans and goals together.",
-        "My skills also include implementing system improvements, optimizing sites, standardizing patterns, and suggesting and executing ideas that add value to the project I'm working on.",
-        "Some of the technologies that I have trained and worked on include (but are not limited to):"
+        "With over <span class='underline'> 17 years </span> of professional experience, I have worked as a <span class='underline'> lecturer </span> and <span class='underline'> researcher </span>, delivering a diverse range of courses across various academic programs, including undergraduate, master’s, and engineering curricula.",
+        "Throughout my career, I have supervised numerous final-year projects, including 10 master’s theses and 2 doctoral dissertations, reflecting my significant contribution to students’ academic development. My passion for research is evident in the publication and co-authorship of more than 30 scientific articles, which have been recognized at international conferences and published in peer-reviewed journals, contributing to the advancement of knowledge in my field of expertise.",
+        "Beyond teaching and research, I have taken on various pedagogical, scientific, and administrative responsibilities, enhancingmy ability to work effectively and efficiently while playing a key role in institutional development."
     ],
     "Experience.Title": "Experience",
     "Experience.Jobs": [
