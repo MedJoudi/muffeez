@@ -1,18 +1,7 @@
-// blog-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { AnalyticsService } from '../../services/analytics/analytics.service';
-
-interface BlogPost {
-  id: string;
-  title: string;
-  date: string;
-  summary: string;
-  tags: string[];
-  image: string;
-}
 
 @Component({
   selector: 'app-blog-list',
@@ -20,36 +9,97 @@ interface BlogPost {
   styleUrls: ['./blog-list.component.scss']
 })
 export class BlogListComponent implements OnInit {
-  posts: BlogPost[] = [];
-  loading = true;
+  allPosts: any[] = [];
+  filteredPosts: any[] = [];
+  posts: any[] = [];
+  archiveData: { dateKey: string; monthYear: string; count: number }[] = [];
+  activeFilter: string | null = null;
+  loading = false;
   error = false;
 
+  readonly PAGE_SIZE = 6;
+  currentPage = 1;
+
   constructor(
-    private titleService: Title,
     private http: HttpClient,
     private router: Router,
-    public analyticsService: AnalyticsService
+    private titleService: Title
   ) {}
 
-  ngOnInit() {
-    this.loadBlogPosts();
-    this.titleService.setTitle(`Marouen Kachroudi | Blog`);
+  ngOnInit(): void {
+    this.titleService.setTitle('Marouen Kachroudi | Blog');
+    this.loadPosts();
   }
 
-  loadBlogPosts(): void {
-    this.http.get<BlogPost[]>('assets/blog/posts.json').subscribe(
-      posts => {
-        this.posts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  private loadPosts(): void {
+    this.loading = true;
+    this.error = false;
+
+    this.http.get<any[]>('/assets/blog/posts.json').subscribe({
+      next: (data) => {
+        this.allPosts = data;
+        this.filteredPosts = data;
+        this.archiveData = this.generateArchiveData(data);
+        this.resetPagination();
         this.loading = false;
       },
-      error => {
+      error: (err) => {
+        console.error('Error loading posts:', err);
         this.error = true;
         this.loading = false;
       }
-    );
+    });
   }
 
-  goToPost(id: string) {
-    this.router.navigate(['/blog', id]);
+  filterPosts(dateKey: string | null): void {
+    this.activeFilter = dateKey;
+
+    if (!dateKey) {
+      this.filteredPosts = this.allPosts;
+    } else {
+      this.filteredPosts = this.allPosts.filter(post => {
+        const postDate = new Date(post.date);
+        const postKey = `${postDate.getFullYear()}-${(postDate.getMonth() + 1).toString().padStart(2, '0')}`;
+        return postKey === dateKey;
+      });
+    }
+
+    this.resetPagination();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  private resetPagination(): void {
+    this.currentPage = 1;
+    this.posts = this.filteredPosts.slice(0, this.PAGE_SIZE);
+  }
+
+  loadMore(): void {
+    this.currentPage++;
+    const nextPosts = this.filteredPosts.slice(0, this.PAGE_SIZE * this.currentPage);
+    this.posts = nextPosts;
+  }
+
+  hasMorePosts(): boolean {
+    return this.posts.length < this.filteredPosts.length;
+  }
+
+  private generateArchiveData(posts: any[]): { dateKey: string; monthYear: string; count: number }[] {
+    const archiveMap = new Map<string, number>();
+
+    posts.forEach(post => {
+      const date = new Date(post.date);
+      const dateKey = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}`;
+      archiveMap.set(dateKey, (archiveMap.get(dateKey) || 0) + 1);
+    });
+
+    return Array.from(archiveMap.entries()).map(([dateKey, count]) => {
+      const [year, month] = dateKey.split('-');
+      const monthYear = new Date(+year, +month - 1).toLocaleString('default', { month: 'long', year: 'numeric' });
+      return { dateKey, monthYear, count };
+    }).sort((a, b) => b.dateKey.localeCompare(a.dateKey));
+  }
+
+  goToPost(postId: string): void {
+    this.router.navigate(['/blog', postId]);
   }
 }

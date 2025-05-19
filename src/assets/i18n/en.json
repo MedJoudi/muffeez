@@ -7,13 +7,13 @@
     "Header.cvBtn": "Resume",
     "Header.cvName": "MUFFEEZ_CV.pdf",
     "Banner.Pretitle": "Hello! My name is",
-    "Banner.Description": "I have <span class='underline'>4+ years of experience</span> developing systems, interfaces, bots, and technological solutions to make the web a better place. I am dedicated to writing and refactoring clean, reusable, and scalable code in <span class='underline'>Angular, React, NodeJS, ExpressJS and NestJS</span> and sometimes in <span class='underline'>Python</span> applying good practices and development standards.",
+    "Banner.Description": "With <span class='underline'> 17+ years </span> in academia, I’ve taught across undergraduate, master’s, and engineering programs, and supervised over a <span class='underline'> dozen theses </span>, including <span class='underline'> 2 PhDs </span>. I’ve co-authored <span class='underline'> 30+ peer-reviewed publications </span> and held pedagogical, scientific, and administrative roles contributing to academic and institutional growth.",
     "Banner.ActionBtn": "Get in touch",
     "AboutMe.Title": "About me",
     "AboutMe.Paragraphs": [
         "With over <span class='underline'> 17 years </span> of professional experience, I have worked as a <span class='underline'> lecturer </span> and <span class='underline'> researcher </span>, delivering a diverse range of courses across various academic programs, including undergraduate, master’s, and engineering curricula.",
         "Throughout my career, I have supervised numerous final-year projects, including 10 master’s theses and 2 doctoral dissertations, reflecting my significant contribution to students’ academic development. My passion for research is evident in the publication and co-authorship of more than 30 scientific articles, which have been recognized at international conferences and published in peer-reviewed journals, contributing to the advancement of knowledge in my field of expertise.",
-        "Beyond teaching and research, I have taken on various pedagogical, scientific, and administrative responsibilities, enhancingmy ability to work effectively and efficiently while playing a key role in institutional development."
+        "Beyond <span class='underline'> teaching and research </span>, I have taken on various pedagogical, scientific, and administrative responsibilities, enhancingmy ability to work effectively and efficiently while playing a key role in institutional development."
     ],
     "Experience.Title": "Experience",
     "Experience.Jobs": [

@@ -32,7 +32,7 @@
     }
 
     .skills-list{
-        display: grid;
+        display: contents;
         grid-template-columns: repeat(2,minmax(140px,200px));
         overflow: hidden;
         padding: 0;

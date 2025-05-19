@@ -132,6 +132,39 @@
     }
   }
 
+  /* === Archive Section === */
+  .archive-list {
+    margin-top: 2rem;
+    padding-left: 0;
+    list-style: none;
+
+    .list-group-item {
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+
+      .badge {
+        background-color: $LightNavy !important;
+        color: $Navy  !important;
+        font-size: 0.75rem;
+      }
+
+      &:hover {
+        background-color: #f8f9fa;
+      }
+
+      &.active {
+        font-weight: bold;
+        background-color: #0d6efd;
+        color: #fff;
+
+        .badge {
+          background-color: #fff !important;
+          color: #0d6efd !important;
+        }
+      }
+    }
+  }
+
   @media (max-width: 768px) {
     .section-box {
       padding: 0 20px;
