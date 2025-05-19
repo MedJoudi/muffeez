@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "muffeez-portfolio": {
+        "marouen-portfolio": {
             "projectType": "application",
             "schematics": {},
             "root": "",
@@ -19,7 +19,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/muffeez-portfolio",
+                        "outputPath": "dist/marouen-portfolio",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -87,18 +87,18 @@
                     "options": {
                         "disableHostCheck": true,
                         "servePath": "/",
-                        "browserTarget": "muffeez-portfolio:build"
+                        "browserTarget": "marouen-portfolio:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "muffeez-portfolio:build:production"
+                            "browserTarget": "marouen-portfolio:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "muffeez-portfolio:build"
+                        "browserTarget": "marouen-portfolio:build"
                     }
                 },
                 "test": {
@@ -136,11 +136,11 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "muffeez-portfolio:serve"
+                        "devServerTarget": "marouen-portfolio:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "muffeez-portfolio:serve:production"
+                            "devServerTarget": "marouen-portfolio:serve:production"
                         }
                     }
                 },
@@ -150,7 +150,7 @@
             }
         }
     },
-    "defaultProject": "muffeez-portfolio",
+    "defaultProject": "marouen-portfolio",
     "schematics": {
         "@schematics/angular:component": {
             "style": "scss",

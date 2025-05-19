@@ -6,7 +6,7 @@
 
 This project demonstrates how to deploy an Angular 12 application to Azure Static Web Apps using GitHub Actions.
 
-# Muffeez-Portfolio 
+# marouen-portfolio 
 Click the link below to open Muffezz's portfolio.
 <https://mufeez1.github.io/muffeez/> 
 
@@ -27,7 +27,7 @@ Follow these steps to set up your Azure Static Web App:
 3. Fill in the basic details:
    - Subscription
    - Resource group (create new if needed)
-   - Name (e.g., `muffeez-portfolio`)
+   - Name (e.g., `marouen-portfolio`)
    - Hosting plan: Free
    - Region: Choose one closest to your users
 4. In the "Deployment Details" section:
@@ -77,7 +77,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }} # This secret is created in Github when Azure Static Web App is created.
           action: "upload"
           app_location: "/"  # Source code location
-          output_location: "dist/muffeez-portfolio"  # Built files location (matches angular.json)
+          output_location: "dist/marouen-portfolio"  # Built files location (matches angular.json)
           
   close_pull_request_job:
     name: Close Pull Request Job
@@ -95,7 +95,7 @@ jobs:
 | `azure_static_web_apps_api_token` | (inherited) | secret | This secret is created when Azure Static Web App is created. | ✅ Yes |
 |---------|--------------|------|-------------|----------|
 | `app_location` | `/` | string | Root directory containing Angular source files (must contain `angular.json`) | ✅ Yes |
-| `output_location` | `dist/muffeez-portfolio` | string | Build output directory (must match `outputPath` in `angular.json`) | ✅ Yes |
+| `output_location` | `dist/marouen-portfolio` | string | Build output directory (must match `outputPath` in `angular.json`) | ✅ Yes |
 | `node-version` | `14.x` | string | Node.js version (Angular 12 requires 12.x-14.x) | ✅ Yes |
 | `build_command` | `npm run build -- --configuration production` | string | Production build command with Angular CLI flags | ✅ Yes |
 | `api_location` | (empty) | string | API directory if using Azure Functions backend | ❌ No |
@@ -107,7 +107,7 @@ jobs:
 ```yaml
 env:
   NODE_VERSION: '14.x'  # Change according to Angular version
-  OUTPUT_DIR: 'dist/muffeez-portfolio'  # Must match angular.json
+  OUTPUT_DIR: 'dist/marouen-portfolio'  # Must match angular.json
 ```
 This README includes:
 1. Clear setup instructions with Azure portal guidance

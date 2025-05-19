@@ -37,9 +37,9 @@ jobs:
       # Verify the built files exist in the correct location
       - name: Verify build output
         run: |
-          ls -la dist/muffeez-portfolio/
-          if [ ! -f "dist/muffeez-portfolio/index.html" ]; then
-            echo "ERROR: index.html not found in dist/muffeez-portfolio directory"
+          ls -la dist/marouen-portfolio/
+          if [ ! -f "dist/marouen-portfolio/index.html" ]; then
+            echo "ERROR: index.html not found in dist/marouen-portfolio directory"
             exit 1
           fi
       
@@ -51,7 +51,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "/"  # Source code location
-          output_location: "dist/muffeez-portfolio"  # Built files location (matches angular.json)
+          output_location: "dist/marouen-portfolio"  # Built files location (matches angular.json)
           
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
