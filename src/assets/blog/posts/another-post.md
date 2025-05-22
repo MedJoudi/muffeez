@@ -4,7 +4,7 @@ date: 2023-06-14
 subtitle: "Test Subtitle"
 author: "Marouen Kachroudi"
 tags: ['Test', 'Angular']
-image: "/assets/images/bbm/image1.png"
+image: "assets/blog/images/blog-placeholder.jpg"
 ---
 
 # Real Content Starts Here

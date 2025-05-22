@@ -9,97 +9,111 @@ import { Router } from '@angular/router';
   styleUrls: ['./blog-list.component.scss']
 })
 export class BlogListComponent implements OnInit {
-  allPosts: any[] = [];
-  filteredPosts: any[] = [];
   posts: any[] = [];
-  archiveData: { dateKey: string; monthYear: string; count: number }[] = [];
+  archiveData: any[] = [];
   activeFilter: string | null = null;
-  loading = false;
+  loading = true;
   error = false;
-
-  readonly PAGE_SIZE = 6;
+  postsPerPage = 6;
   currentPage = 1;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private titleService: Title
-  ) {}
+  // ➕ Added for Categories section
+  uniqueTags: string[] = [];
+  tagCounts: { [tag: string]: number } = {};
+
+  constructor(private http: HttpClient, private titleService: Title, private router: Router) {}
 
   ngOnInit(): void {
     this.titleService.setTitle('Marouen Kachroudi | Blog');
     this.loadPosts();
   }
 
-  private loadPosts(): void {
-    this.loading = true;
-    this.error = false;
-
+  loadPosts(): void {
     this.http.get<any[]>('/assets/blog/posts.json').subscribe({
       next: (data) => {
-        this.allPosts = data;
-        this.filteredPosts = data;
-        this.archiveData = this.generateArchiveData(data);
-        this.resetPagination();
+        this.posts = data;
+
+        const archiveMap: { [key: string]: { monthYear: string; count: number } } = {};
+
+        data.forEach(post => {
+          const date = new Date(post.date);
+          const monthYear = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+          const dateKey = `${date.getFullYear()}-${date.getMonth() + 1}`;
+
+          if (!archiveMap[dateKey]) {
+            archiveMap[dateKey] = { monthYear, count: 0 };
+          }
+
+          archiveMap[dateKey].count++;
+        });
+
+        this.archiveData = Object.entries(archiveMap).map(([dateKey, { monthYear, count }]) => ({
+          dateKey,
+          monthYear,
+          count
+        }));
+
+        // ➕ Extract unique tags and counts for Categories section
+        const tagSet = new Set<string>();
+        const tagMap: { [tag: string]: number } = {};
+
+        data.forEach(post => {
+          if (Array.isArray(post.tags)) {
+            post.tags.forEach(tag => {
+              tagSet.add(tag);
+              tagMap[tag] = (tagMap[tag] || 0) + 1;
+            });
+          }
+        });
+
+        this.uniqueTags = Array.from(tagSet).sort();
+        this.tagCounts = tagMap;
+
         this.loading = false;
       },
-      error: (err) => {
-        console.error('Error loading posts:', err);
+      error: () => {
         this.error = true;
         this.loading = false;
       }
     });
   }
 
-  filterPosts(dateKey: string | null): void {
-    this.activeFilter = dateKey;
-
-    if (!dateKey) {
-      this.filteredPosts = this.allPosts;
-    } else {
-      this.filteredPosts = this.allPosts.filter(post => {
-        const postDate = new Date(post.date);
-        const postKey = `${postDate.getFullYear()}-${(postDate.getMonth() + 1).toString().padStart(2, '0')}`;
-        return postKey === dateKey;
-      });
-    }
-
-    this.resetPagination();
+  filterPosts(filter: string | null): void {
+    this.activeFilter = filter;
+    this.currentPage = 1;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  private resetPagination(): void {
-    this.currentPage = 1;
-    this.posts = this.filteredPosts.slice(0, this.PAGE_SIZE);
-  }
+hasMorePosts(): boolean {
+  const filtered = !this.activeFilter
+    ? this.posts
+    : this.posts.filter(post => {
+        const date = new Date(post.date);
+        const dateKey = `${date.getFullYear()}-${date.getMonth() + 1}`;
+        return dateKey === this.activeFilter || (post.tags && post.tags.includes(this.activeFilter));
+      });
+
+  return filtered.length > this.currentPage * this.postsPerPage;
+}
+
 
   loadMore(): void {
     this.currentPage++;
-    const nextPosts = this.filteredPosts.slice(0, this.PAGE_SIZE * this.currentPage);
-    this.posts = nextPosts;
-  }
-
-  hasMorePosts(): boolean {
-    return this.posts.length < this.filteredPosts.length;
-  }
-
-  private generateArchiveData(posts: any[]): { dateKey: string; monthYear: string; count: number }[] {
-    const archiveMap = new Map<string, number>();
-
-    posts.forEach(post => {
-      const date = new Date(post.date);
-      const dateKey = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}`;
-      archiveMap.set(dateKey, (archiveMap.get(dateKey) || 0) + 1);
-    });
-
-    return Array.from(archiveMap.entries()).map(([dateKey, count]) => {
-      const [year, month] = dateKey.split('-');
-      const monthYear = new Date(+year, +month - 1).toLocaleString('default', { month: 'long', year: 'numeric' });
-      return { dateKey, monthYear, count };
-    }).sort((a, b) => b.dateKey.localeCompare(a.dateKey));
   }
 
   goToPost(postId: string): void {
     this.router.navigate(['/blog', postId]);
+  }
+
+  getFilteredPosts(): any[] {
+    const filtered = !this.activeFilter
+      ? this.posts
+      : this.posts.filter(post => {
+          const date = new Date(post.date);
+          const dateKey = `${date.getFullYear()}-${date.getMonth() + 1}`;
+          return dateKey === this.activeFilter || (post.tags && post.tags.includes(this.activeFilter));
+        });
+
+    return filtered.slice(0, this.currentPage * this.postsPerPage);
   }
 }

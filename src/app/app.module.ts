@@ -15,6 +15,7 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { BlogListComponent } from './blog/blog-list/blog-list.component';
 import { BlogPostComponent } from './blog/blog-post/blog-post.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { ProtectionModalComponent } from './protection-modal/protection-modal.component';
 
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -25,6 +26,7 @@ export function HttpLoaderFactory(http: HttpClient){
     AppComponent,
     BlogListComponent,
     BlogPostComponent,
+    ProtectionModalComponent,
     /* ArchiveComponent */
   ],
   imports: [
